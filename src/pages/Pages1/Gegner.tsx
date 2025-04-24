@@ -113,9 +113,9 @@ const Gegner = () => {
       <div className="space-y-4">
         <h3 className="text-xl font-semibold mb-4">Alle Teams von TSV-Langgöns:</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {vereineList.map((team) => (
+          {vereineList.map((team, index) => (
             <div
-              key={team.id}
+              key={index}
               className={`${selectedTeam && selectedTeam.id === team.id ? "shadow-md shadow-blue-300 bg-blue-100" : ""} p-4 rounded-lg shadow-md cursor-pointer transition-colors`}
               onClick={() => handleTeamClick(team)}
             >
@@ -157,9 +157,9 @@ const Gegner = () => {
               <tbody className="divide-y divide-gray-200">
                 {displayList
                   .filter((gegner) => gegner.gegnerid === selectedTeam.id)
-                  .map((gegner) => (
-                    <tr key={gegner.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4 text-sm text-gray-900">{gegner.id}</td>
+                  .map((gegner, index) => (
+                    <tr key={index} className="hover:bg-gray-50 transition-colors">
+                      <td className="px-6 py-4 text-sm text-gray-900">{index}</td>
                       <td className="px-6 py-4 text-sm text-gray-900">{gegner.name}</td>
                       <td className="px-6 py-4 text-sm text-gray-900">{gegner.trainername}</td>
                       <td className="px-6 py-4 text-sm text-gray-900">{gegner.telefon}</td>
@@ -198,8 +198,8 @@ const Gegner = () => {
           <div className="sm:hidden space-y-4">
             {displayList
               .filter((gegner) => gegner.gegnerid === selectedTeam.id)
-              .map((gegner) => (
-                <div key={gegner.id} className="p-4 bg-white rounded-lg shadow-md">
+              .map((gegner, index) => (
+                <div key={index} className="p-4 bg-white rounded-lg shadow-md">
                   <div className="text-sm text-gray-900">
                     <div className="font-semibold">{gegner.name}</div>
                     <div className="text-gray-700">👨‍🏫 Trainername: {gegner.trainername}</div>
