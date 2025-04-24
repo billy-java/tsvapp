@@ -37,9 +37,9 @@ const GegnerModal = ({ selectedTeam, onClose, gegner }: GegnerModalProps) => {
         }
       };
     
-      if (trainerListTemp.length === 0) {
+     
       fetchData();
-      }
+      
     }, [dispatch, trainerListTemp.length]);
     
   // Lokaler Zustand für das Formular

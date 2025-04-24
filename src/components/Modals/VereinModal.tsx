@@ -34,10 +34,8 @@ const VereinModal = () => {
       }
     };
     
-    if (trainerList.length === 0) {
+   
       fetchData();
-
-    }
   }, [dispatch, trainerListTemp.length]);
 
   
