@@ -55,7 +55,7 @@ instanceAxios.interceptors.response.use(
 
       try {
         const refreshToken = localStorage.getItem("refresh-token");
-        const response = await axios.post("http://tsvapp.de/benutzer/refresh-token", { refreshToken });
+        const response = await axios.post("https://tsvapp.de/benutzer/refresh-token", { refreshToken });
 
         const { token, refreshToken: newRefreshToken } = response.data;
 
