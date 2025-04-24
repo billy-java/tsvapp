@@ -3,7 +3,7 @@
 import axios from "axios";
 import { I_Benutzer } from "../types/I_Benutzer";
 
-const API_BASE_URL = "http://tsvapp.de"; // Remplace par l'URL réelle du serveur
+const API_BASE_URL = "https://tsvapp.de"; // Remplace par l'URL réelle du serveur
 
 const api = axios.create({
   baseURL: API_BASE_URL,
