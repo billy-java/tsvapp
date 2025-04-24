@@ -114,7 +114,7 @@ const Registrieren = () => {
   };
 
   try {
-    const response = await axios.post("http://tsvapp.de/benutzer/registrieren", userData);
+    const response = await axios.post("https://tsvapp.de/benutzer/registrieren", userData);
 
     localStorage.setItem("token", response.data.token);
     localStorage.setItem("refresh-token", response.data.refreshToken);
