@@ -142,7 +142,7 @@ const Protokolle = () => {
                 className="hover:bg-gray-50 transition-colors"
               >
                 <td className="px-6 py-4 text-sm text-gray-900">
-                  {index}
+                  {index+1}
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-900">
                   {dokument.titel}

@@ -147,7 +147,7 @@ const [sortedList, setSortedList] = useState<I_Information[]>([]);
               key={index}
               className={`hover:bg-gray-50 transition-colors ${information.status === "Inactive" ? "bg-red-100" : (information.status === "Active" && information.wichtig) ? "bg-green-100" : ""}`} // Mettre en évidence les éléments "wichtig"
             >
-                <td className="px-6 py-4 text-sm text-gray-900">{index}</td>
+                <td className="px-6 py-4 text-sm text-gray-900">{index+1}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{information.kategorie}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{information.titel}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{information.beschreibung}</td>

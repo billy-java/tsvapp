@@ -142,7 +142,7 @@ const requestSort = (key: keyof I_Dokument) => {
           <tbody className="divide-y divide-gray-200">
             {displayList.map((dokument, index) => (
               <tr key={index} className="hover:bg-gray-50 transition-colors">
-                <td className="px-6 py-4 text-sm text-gray-900">{index}</td>
+                <td className="px-6 py-4 text-sm text-gray-900">{index+1}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{dokument.titel}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{dokument.type}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{formatGermanDate(dokument.gueltigab)}</td>
