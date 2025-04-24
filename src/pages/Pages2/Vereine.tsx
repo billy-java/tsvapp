@@ -146,9 +146,9 @@ const Vereine = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {displayList.map((verein) => (
-              <tr key={verein.id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-6 py-4 text-sm text-gray-900">{verein.id}</td>
+            {displayList.map((verein, index) => (
+              <tr key={index} className="hover:bg-gray-50 transition-colors">
+                <td className="px-6 py-4 text-sm text-gray-900">{index}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{verein.name}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{verein.trainername}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{verein.telefon}</td>

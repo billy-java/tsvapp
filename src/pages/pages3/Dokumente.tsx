@@ -142,9 +142,9 @@ const [sortedList, setSortedList] = useState<I_Dokument[]>([]);
 </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {displayList.map((dokument) => (
-              <tr key={dokument.id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-6 py-4 text-sm text-gray-900">{dokument.id}</td>
+            {displayList.map((dokument, index) => (
+              <tr key={index} className="hover:bg-gray-50 transition-colors">
+                <td className="px-6 py-4 text-sm text-gray-900">{index}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{dokument.titel}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{dokument.type}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{dokument.kategorie}</td>

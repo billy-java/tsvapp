@@ -142,12 +142,12 @@ const [sortedList, setSortedList] = useState<I_Information[]>([]);
 </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {displayList.map((information) => (
+            {displayList.map((information, index) => (
               <tr
-              key={information.id}
+              key={index}
               className={`hover:bg-gray-50 transition-colors ${information.status === "Inactive" ? "bg-red-100" : (information.status === "Active" && information.wichtig) ? "bg-green-100" : ""}`} // Mettre en évidence les éléments "wichtig"
             >
-                <td className="px-6 py-4 text-sm text-gray-900">{information.id}</td>
+                <td className="px-6 py-4 text-sm text-gray-900">{index}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{information.kategorie}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{information.titel}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{information.beschreibung}</td>

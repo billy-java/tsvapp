@@ -136,13 +136,13 @@ const Protokolle = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {displayList.map((dokument) => (
+            {displayList.map((dokument, index) => (
               <tr
-                key={dokument.id}
+                key={index}
                 className="hover:bg-gray-50 transition-colors"
               >
                 <td className="px-6 py-4 text-sm text-gray-900">
-                  {dokument.id}
+                  {index}
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-900">
                   {dokument.titel}
@@ -185,9 +185,9 @@ const Protokolle = () => {
 
       {/* Affichage en cartes pour les petits écrans */}
       <div className="sm:hidden space-y-4">
-  {displayList.map((dokument) => (
+  {displayList.map((dokument, index) => (
     <div
-      key={dokument.id}
+      key={index}
       className={`p-4 rounded-lg shadow-md ${
         dokument.kategorie === "Protokol"
           ? "bg-blue-100"
