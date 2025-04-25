@@ -83,7 +83,7 @@ const Protokolle = () => {
                 onClick={() => requestSort("id")}
               >
                 <div className="flex items-center">
-                  ID <span className="ml-2">{iconsListe.Sortieren.icon1}</span>
+                  n <span className="ml-2">{iconsListe.Sortieren.icon1}</span>
                 </div>
               </th>
               <th

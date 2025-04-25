@@ -95,7 +95,7 @@ const requestSort = (key: keyof I_Dokument) => {
     onClick={() => requestSort("id")}
   >
     <div className="flex items-center">
-      ID <span className="ml-2">{iconsListe.Sortieren.icon1}</span>
+      n <span className="ml-2">{iconsListe.Sortieren.icon1}</span>
     </div>
   </th>
   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-300"

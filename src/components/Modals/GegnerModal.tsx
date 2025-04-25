@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { I_Verein } from "../../types/I_Verein";
-import { dataErstellen, dataAendern, fetchAllData, fetchTrainer } from "../../service/axiosFetch";
+import { I_Verein } from '../../types/I_Verein';
+import { dataErstellen, dataAendern, fetchAllData } from "../../service/axiosFetch";
 import { setGegnerVereine } from "../../redux/vereinSlice";
 import { T_RootState } from "../../redux/store";
-import { einAdmin, einTrainer, formatTelefon, validateTelefon } from "../../service/service";
-import { I_Benutzer } from "../../types/I_Benutzer";
-import { setTrainerListSlice } from "../../redux/benutzerSlice";
+import {  formatTelefon, validateTelefon } from "../../service/service";
 
 interface GegnerModalProps {
   selectedTeam: I_Verein | null;
@@ -17,30 +15,9 @@ interface GegnerModalProps {
 const GegnerModal = ({ selectedTeam, onClose, gegner }: GegnerModalProps) => {
   const dispatch = useDispatch();
   const userIch = useSelector((state : T_RootState) => state.auth.userState.user!)
-  const [trainerList, setTrainerList] = useState<I_Benutzer[]>([]);
   const [telefonError, setTelefonError] = useState("");
-  const trainerListTemp = useSelector(
-    (state: T_RootState) => state.benutzer.trainerList
-  );
 
-  useEffect(() => {
-      const fetchData = async () => {
-        try {
-        
-         
-            const trainer = await fetchTrainer();
-              setTrainerList(trainer);
-              dispatch(setTrainerListSlice(trainer));
-      
-        } catch (error) {
-          console.error("Fehler beim Laden der Vereinsdaten:", error);
-        }
-      };
-    
-     
-      fetchData();
-      
-    }, [dispatch, trainerListTemp.length]);
+  
     
   // Lokaler Zustand für das Formular
   const [neuerGegner, setNeuerGegner] = useState<I_Verein>(
@@ -49,15 +26,15 @@ const GegnerModal = ({ selectedTeam, onClose, gegner }: GegnerModalProps) => {
       : {
           id: 0,
           name: "",
-          trainername: "", // Neues Feld für den Namen des Trainers
-          coachid: einTrainer(userIch) ? userIch.id : 0,
-          istGegner: true, // Assurez-vous que istGegner est toujours vrai
-          telefon: "", // Ajoutez une valeur par défaut
-          email: "", // Ajoutez une valeur par défaut
-          adresse: "", // Ajoutez une valeur par défaut
-          beschreibung: "", // Ajoutez une valeur par défaut
-          zusatzinformation: "", // Ajoutez une valeur par défaut
-          regeln: "", // ID des ausgewählten Teams hinzufügen
+          trainername: "", // comme VereinModal
+          coachid: userIch.id, // valeur par défaut plus sûre
+          istGegner: true,
+          telefon: "",
+          email: "",
+          adresse: "",
+          beschreibung: "",
+          zusatzinformation: "",
+          regeln: "",
           gegnerid: selectedTeam ? selectedTeam.id : undefined,
         }
   );
@@ -87,7 +64,7 @@ const GegnerModal = ({ selectedTeam, onClose, gegner }: GegnerModalProps) => {
 
     try {
       // S'assurer que istGegner est vrai lors de la création d'un nouvel adversaire
-      const formData = { ...neuerGegner, istGegner: true };
+      const formData : I_Verein = { ...neuerGegner, istGegner: true };
 
       if (gegner) {
         // Bestehenden Gegner aktualisieren
@@ -108,21 +85,7 @@ const GegnerModal = ({ selectedTeam, onClose, gegner }: GegnerModalProps) => {
     }
   };
 
-  const handleCoachChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const coachid = parseInt(e.target.value, 10);
-  
-    // Trouver le coach sélectionné dans la liste des coachs
-    const selectedCoach = trainerList.find((trainer) => trainer.id === coachid);
-  
-    if (selectedCoach) {
-      // Mettre à jour neuerVerein avec l'ID du coach et son nom complet
-      setNeuerGegner({
-        ...neuerGegner,
-        coachid: selectedCoach.id,
-        trainername: `${selectedCoach.vorname} ${selectedCoach.nachname}`,
-      });
-    }
-  };
+ 
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -149,37 +112,14 @@ const GegnerModal = ({ selectedTeam, onClose, gegner }: GegnerModalProps) => {
             />
           </div>
 
-          {/* Feld für den Namen des Trainers */}
-   {einAdmin(userIch) ? <div>
-              <label
-                htmlFor="coachid"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Trainer
-              </label>
-              <select
-                id="coachid"
-                name="coachid"
-                value={neuerGegner.coachid}
-                onChange={handleCoachChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              >
-                <option value="">Wählen Sie einen Coach</option>
-                {trainerList.map((trainer) => (
-                  <option key={trainer.id} value={trainer.id}>
-                    {trainer.nachname} {trainer.vorname}
-                  </option>
-                ))}
-              </select>
-            </div> : null}       
+             
 
           {/* Feld für den Namen des Trainers */}
-       {einTrainer(userIch) ? <div>
+       <div>
             <label htmlFor="trainername" className="block text-sm font-medium text-gray-700">
               Name des Trainers
             </label>
-            <input required
+            <input 
               type="text"
               id="trainername"
               name="trainername"
@@ -187,7 +127,7 @@ const GegnerModal = ({ selectedTeam, onClose, gegner }: GegnerModalProps) => {
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-          </div> : null}   
+          </div> 
 
           {/* Feld für die Telefonnummer */}
           <div>

@@ -115,7 +115,7 @@ const [sortedList, setSortedList] = useState<I_Information[]>([]);
           <thead className="bg-gray-50">
           <tr>
   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-300" onClick={() => requestSort("id")}>
-    <div className="flex items-center">ID <span className="ml-2">{iconsListe.Sortieren.icon1}</span></div>
+    <div className="flex items-center">n <span className="ml-2">{iconsListe.Sortieren.icon1}</span></div>
   </th>
   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-300" onClick={() => requestSort("kategorie")}>
     <div className="flex items-center">Kategorie <span className="ml-2">{iconsListe.Sortieren.icon1}</span></div>

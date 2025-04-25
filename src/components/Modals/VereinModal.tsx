@@ -116,13 +116,10 @@ const VereinModal = () => {
     });
     }
     
-   
-   
-
     try {
       if (aendern) {
         // Mettre à jour le Verein existant
-        await dataAendern<I_Verein>("/m/", neuerVerein.id!, neuerVerein);
+        await dataAendern<I_Verein>("/vereine/", neuerVerein.id!, neuerVerein);
 
         if(altTrainerId  && altTrainerId !== neuerVerein.coachid) {
           updateTeamCoach (neuerVerein.id, altTrainerId, neuerVerein.coachid as number)

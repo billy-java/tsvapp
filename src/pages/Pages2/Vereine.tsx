@@ -128,7 +128,7 @@ const Vereine = () => {
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-300" onClick={() => requestSort("id")}>
-                <div className="flex items-center">ID <span className="ml-2">{iconsListe.Sortieren.icon1}</span></div>
+                <div className="flex items-center">n <span className="ml-2">{iconsListe.Sortieren.icon1}</span></div>
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-300" onClick={() => requestSort("name")}>
                 <div className="flex items-center">Vereinsname <span className="ml-2">{iconsListe.Sortieren.icon1}</span></div>
@@ -174,7 +174,7 @@ const Vereine = () => {
                     onClick={() => handleShowDetails(verein)}
                     className={`px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 ${(einAdmin(user!) || canManageVerein(verein)) ? "ml-2" : ""}`}
                   >
-                    Details
+                    Mehr
                   </button>
                 </td>
               </tr>
@@ -214,7 +214,7 @@ const Vereine = () => {
                   onClick={() => handleShowDetails(verein)}
                   className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center"
                 >
-                  Details
+                  Mehr
                 </button>
               </div>
             </div>
